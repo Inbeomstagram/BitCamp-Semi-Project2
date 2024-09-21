@@ -2,7 +2,7 @@
 name: Feature issue template
 about: 기능 개발을 위한 issue
 title: "[Feat]"
-labels: enhancement
+labels: feat
 assignees: ''
 
 ---
