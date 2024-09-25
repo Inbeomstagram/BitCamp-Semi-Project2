@@ -47,6 +47,6 @@
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="../js/boardWrite.js"></script>
+	<script src="../js/board/boardWrite.js"></script>
 </body>
 </html>
