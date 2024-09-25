@@ -25,7 +25,6 @@
 					</p>
 			</div>
 		</div>
-
 		<div class="item event1">
 			<div class="event-description1">
 					<h2 class="geed">좋아하는 아이디어를 저장하세요</h2>
