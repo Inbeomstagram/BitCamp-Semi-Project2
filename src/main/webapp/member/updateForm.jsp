@@ -55,7 +55,7 @@ th, td {
 	    <tr>
 	        <th>비밀번호</th>
 	        <td>
-	        	<input type="password" name="password" id="password" size="40" placeholder="비밀번호 입력">
+	        	<input type="password" name="password" id="pwd" size="40" placeholder="비밀번호 입력">
 	        	<div id="pwdDiv"></div>
 	        </td>
 	    </tr>
@@ -130,7 +130,7 @@ th, td {
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js/member.js"></script>
+<script src="../js/member/update.js"></script>
 <script type="text/javascript">
 window.onload = function(){
 	document.updateForm.gender['${sessionScope.memDTO.gender}'].checked = true;

@@ -23,6 +23,9 @@
                     <a href="${pageContext.request.contextPath}/member/updateForm.do">회원정보수정</a>
                 </li>
                 <li>
+                    <input type="button" id="memberDelete" value="회원탈퇴">
+                </li>
+                <li>
                     <a href="${pageContext.request.contextPath}/member/mypage.do">마이페이지</a>
                 </li>
             </c:if>
@@ -39,7 +42,7 @@
     </nav>
 </header>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="js/logout.js"></script>
-
+<script type="text/javascript" src="js/member/logout.js"></script>
+<script type="text/javascript" src="js/member/delete.js"></script>
 </body>
 </html>

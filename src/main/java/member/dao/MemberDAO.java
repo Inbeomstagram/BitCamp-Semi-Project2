@@ -67,4 +67,10 @@ public class MemberDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
+	public void delete(MemberDTO memberDTO){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("memberSQL.delete", memberDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

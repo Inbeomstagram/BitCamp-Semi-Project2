@@ -141,33 +141,6 @@ function checkJoin() {
 }
 
 
-
-//회원정보수정
-$('#updateBtn').click(function(){
-	$('#nameDiv').empty();
-	$('#pwdDiv').empty();
-	
-	if($('#name').val() == '')
-		$('#nameDiv').html('이름 입력');
-	else if($('#pwd').val() == '')
-		$('#pwdDiv').html('비밀번호 입력');
-	else if($('#pwd').val() != $('#repwd').val())
-		$('#pwdDiv').html('비밀번호가 맞지 않습니다');
-	else
-		$.ajax({
-			type: 'post',
-			url: '/Inbeomstagram/member/update.do',
-			data: $('form[name="updateForm"]').serialize(), // name=값&id=값&~~~~
-			success: function(){
-				alert('회원정보 수정 완료');
-				location.href = '/Inbeomstagram/index.do';
-			},
-			error: function(e){
-				console.log(e);
-			}
-		});
-});
-
 //우편번호 - Daum API
 function checkPost() {
     new daum.Postcode({
