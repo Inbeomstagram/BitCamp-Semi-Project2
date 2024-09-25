@@ -9,7 +9,6 @@
 </head>
 <body>
 <jsp:include page="component/header.jsp" />
-
 	<main class="grid" style="margin-top: 80px;">
 		<div class="item event">
 			<div class="event-content">
@@ -38,9 +37,8 @@
 			</div>
 		</div>
 	</main>
-	<script type="text/javascript"
-		src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
-	<script type="text/javascript">
-    </script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="js/member/logout.js"></script>
+    <script type="text/javascript" src="js/member/delete.js"></script>
 </body>
 </html>
