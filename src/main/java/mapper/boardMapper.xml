@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="boardSQL">
+ 	<!-- 핀 등록 -->
+ 	<insert id="boardWrite" parameterType="board">
+ 		INSERT INTO board (seq_board, seq_member, image, imageSubject, imageContent, hit, logtime)
+        VALUES (seq_board_id.NEXTVAL, #{seq_member}, #{image}, #{imageSubject}, #{imageContent}, 0, SYSDATE)
+ 	</insert>
+ 	
+ 	<!-- 핀 목록 -->
+ 	<select id="getBoardList" resultType="board">
+ 		select * from board order by seq_board desc
+ 	</select>
+ 	
+ 	<!--핀 뷰 -->
+ 	<select id="getBoard" parameterType="long" resultType="board">
+ 		select * from board where seq_board=#{seq_board}
+ 	</select>
+ </mapper>

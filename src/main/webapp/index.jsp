@@ -24,6 +24,8 @@
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/member/mypage.do">마이페이지</a>
+                    <a href="${pageContext.request.contextPath}/board/boardWriteForm.do">핀 작성</a>
+                    <a href="${pageContext.request.contextPath}/board/boardList.do">핀 목록</a>
                 </li>
             </c:if>
             <%-- memId가 없을 때 로그인/회원가입 버튼 --%>
