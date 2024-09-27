@@ -96,7 +96,6 @@ header {
 .search-area {
     flex: 1; /* 남은 공간을 채우도록 설정 */
     display: flex;
-    justify-content: center; /* 가운데 정렬 */
 }
 
 .search-box {
@@ -105,7 +104,7 @@ header {
     background-color: #f1f1f1; /* 배경색을 밝은 회색 */
     border-radius: 50px; /* 검색 창을 둥글게 */
     padding: 10px 20px; /* (위아래 10px, 좌우 20px) */
-    width: 100%; /* 검색 창의 너비를 부모 요소의 60%로 설정 */
+    width: 90%; /* 검색 창의 너비를 부모 요소의 60%로 설정 */
 }
 
 .search-box input {
@@ -146,8 +145,9 @@ header {
                 <a href="${pageContext.request.contextPath}/member/joinForm.do" class="signup">가입하기</a>
             </c:if>
             <c:if test="${not empty sessionScope.memDTO}">
+            	<a href="${pageContext.request.contextPath}/popularPage/popularPage.do" class="info">인기 게시글</a>
             	<a href="${pageContext.request.contextPath}/member/mypageForm.do" class="info">${memDTO.name }님</a>
-                <button onclick="logout()" class="logout">로그아웃</button>
+                <button onclick="logout()" class="logout">로그아웃</button>                
             </c:if>
         </div>
     </header>
