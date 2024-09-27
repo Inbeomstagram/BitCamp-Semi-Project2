@@ -11,7 +11,7 @@ import board.bean.BoardDTO;
 import board.dao.BoardDAO;
 import control.CommandProcess;
 
-public class SearchPageService implements CommandProcess {   
+public class PopularPageService implements CommandProcess {   
 	private static final int page_size = 20; // 페이지당 항목 수
 
 	@Override
@@ -22,8 +22,8 @@ public class SearchPageService implements CommandProcess {
 		int page = Integer.parseInt(request.getParameter("page")!=null?request.getParameter("page"):"1");  // default는 1페이지
 		int startRow = (page - 1) * page_size;  // 0 기반으로 계산
 		int endRow = page * page_size;  // 마지막 행은 그대로
-		System.out.println("page: "+page);
-		List<BoardDTO>list = BoardDAO.getInstance().getBoardPagingList(startRow, endRow);
+		
+		List<BoardDTO>list = BoardDAO.getInstance().getBoardPopularPagingList(startRow, endRow);
 		
 		 
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
@@ -34,6 +34,6 @@ public class SearchPageService implements CommandProcess {
             return "none";
         }
         request.setAttribute("list", list);
-        return "/searchPage/searchPage.jsp"; 
+        return "/popularPage/popularPage.jsp"; 
 	}
 }

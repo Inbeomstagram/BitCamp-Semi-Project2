@@ -56,6 +56,16 @@ public class BoardDAO {
 	     return list;
 	}
 	
+	public List<BoardDTO>getBoardPopularPagingList(int startRow, int endRow){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		 Map<String, Integer> params = new HashMap<>();
+	     params.put("startRow", startRow);
+	     params.put("endRow", endRow);
+	     List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardPopularPagingList", params);
+	     sqlSession.close();
+	     return list;
+	}
+	
 	public BoardDTO getBoard(long seq_board) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		BoardDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq_board);

@@ -24,6 +24,16 @@
         ]]>
     </select>
     
+    <select id="getBoardPopularPagingList" resultType="board">
+ 	<![CDATA[
+        SELECT * FROM (
+            SELECT b.*, ROWNUM rnum FROM (
+                SELECT * FROM board ORDER BY hit DESC
+            ) b WHERE ROWNUM <= #{endRow}
+        ) WHERE rnum > #{startRow}
+        ]]>
+    </select>
+    
     <select id="getTotalCount" resultType="int">
         SELECT COUNT(*) FROM board
     </select>
