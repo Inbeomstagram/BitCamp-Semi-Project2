@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="commentSQL">
+ 	<!-- 댓글 작성 -->
+	<insert id="commentWrite" parameterType="comment">
+		INSERT INTO CommentTable (seq_comment, seq_board, name, commentContent, logtime)
+    	VALUES (seq_comment_id.nextval, #{seq_board}, #{name}, #{commentContent}, SYSDATE)
+	</insert>
+ 
+ 	<select id="commentList" parameterType="long" resultType="comment">
+        SELECT * FROM CommentTable WHERE seq_board = #{seq_board} ORDER BY logtime ASC
+    </select>
+ </mapper>

@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../css/boardWriteForm.css">
 </head>
 <body>
+	<jsp:include page="../component/header.jsp" />
 	<div class="container">
 		<div class="card">
 			<!-- 헤더 -->
