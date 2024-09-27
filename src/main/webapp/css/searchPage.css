@@ -30,6 +30,7 @@ body {
     height: auto; /* 높이를 자동으로 설정하여 비율 유지 */
     display: block; /* 이미지의 기본 여백 제거 */
     object-fit: cover; /* 이미지를 자식 요소의 크기에 맞춰 잘라냄 */
+    z-index: 2; /* 이미지가 오버레이보다 위에 위치하도록 설정 */
 }
 
 .grid-item .hit {
@@ -54,6 +55,8 @@ body {
     background: rgba(0, 0, 0, 0.2); /* 검은색 투명 오버레이 */
     opacity: 0; /* 기본적으로 보이지 않음 */
     transition: opacity 0.3s ease; /* 부드러운 전환 효과 */
+    z-index: 1; /* 오버레이가 이미지 위에 오도록 z-index 추가 */
+    pointer-events: none; /* 오버레이가 클릭을 막지 않도록 설정 */
 }
 
 .grid-item:hover .hit {
