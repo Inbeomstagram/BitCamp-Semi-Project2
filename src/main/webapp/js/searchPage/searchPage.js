@@ -19,19 +19,20 @@ $(window).on('load', resizeGridItems);
 $(window).on('resize', resizeGridItems);
 
 $(document).ready(function() {
-    let currentPage = 1;
-    const pageSize = 10;
+    let currentPage = 2;
+    const pageSize = 20;
     let loading = false;
     
     // 첫 페이지 데이터 로드
     loadMoreData(currentPage);
+	currentPage++;
 
     // 스크롤 이벤트 감지
     $(window).scroll(function() {
         // 스크롤이 페이지 끝에 도달했을 때 추가 데이터 요청
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100 && !loading) {
             loading = true;
-            loadMoreData();
+            loadMoreData(currentPage);
         }
     });
 

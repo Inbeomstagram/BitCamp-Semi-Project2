@@ -12,7 +12,7 @@ import board.dao.BoardDAO;
 import control.CommandProcess;
 
 public class SearchPageService implements CommandProcess {   
-	private static final int page_size = 10; // 페이지당 항목 수
+	private static final int page_size = 20; // 페이지당 항목 수
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {		
