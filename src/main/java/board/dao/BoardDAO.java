@@ -51,7 +51,7 @@ public class BoardDAO {
 		 Map<String, Integer> params = new HashMap<>();
 	     params.put("startRow", startRow);
 	     params.put("endRow", endRow);
-	     List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardList", params);
+	     List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardPagingList", params);
 	     sqlSession.close();
 	     return list;
 	}

@@ -1,28 +1,8 @@
-function resizeGridItems() {
-    $('.grid-item').each(function() {
-        var $gridItem = $(this);
-        imagesLoaded(this, function() {
-            var $grid = $('.gallery');
-            var rowHeight = parseInt($grid.css('grid-auto-rows'));
-            var rowGap = parseInt($grid.css('grid-gap'));
-            var rowSpan = Math.floor(($gridItem.find('img').outerHeight() + rowGap) / (rowHeight + rowGap));
-            $gridItem.css('grid-row-end', 'span ' + rowSpan);
-        });
-    });
-
-    var $gallery = $('.gallery');
-    imagesLoaded($gallery[0], function() {
-        $('.grid-item').css('visibility', 'visible');
-    });
-}
-$(window).on('load', resizeGridItems);
-$(window).on('resize', resizeGridItems);
-
 $(document).ready(function() {
     let currentPage = 1;
-    const pageSize = 10;
+    const pageSize = 20;
     let loading = false;
-    
+
     // 첫 페이지 데이터 로드
     loadMoreData(currentPage);
 
@@ -31,7 +11,7 @@ $(document).ready(function() {
         // 스크롤이 페이지 끝에 도달했을 때 추가 데이터 요청
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100 && !loading) {
             loading = true;
-            loadMoreData();
+            loadMoreData(currentPage);
         }
     });
 
@@ -43,6 +23,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 if (data.length > 0) {
+                    console.log(data);
                     renderData(data);
                     currentPage++;  // 데이터 로드 후 다음 페이지를 준비
                     loading = false;
@@ -55,16 +36,53 @@ $(document).ready(function() {
     }
 
     function renderData(data) {
+        console.log("data:", data); // 데이터 확인
+
+        const $gallery = $('.gallery');
+
         data.forEach(function(boardDTO) {
+            // 각각의 속성을 변수에 할당
+            const seqBoard = boardDTO.seq_board;
+            const image = boardDTO.image;
+            const imageSubject = boardDTO.imageSubject;
+            const hit = boardDTO.hit;
+
+            // 새로운 항목 생성
             const newItem = `
                 <div class="grid-item">
-                    <a href="board/boardView.do?seq_board=${boardDTO.seq_board}">
-                        <img src="storage/${boardDTO.image}" alt="${boardDTO.imageSubject}" />
-                        <span class="hit">${boardDTO.hit}</span>
+                    <a href="${contextPath}/board/boardView.do?seq_board=${seqBoard}">
+                        <img src="${contextPath}/storage/${image}" alt="${imageSubject}" />
+                        <span class="hit">${hit}</span>
                     </a>
                 </div>`;
-            $('.gallery').append(newItem);
+            
+            // 갤러리에 새 항목 추가
+            $gallery.append(newItem);
+        });
+
+        // 이미지가 추가된 후 resizeGridItems 호출
+        resizeGridItems();
+    }
+
+    function resizeGridItems() {
+        $('.grid-item').each(function() {
+            var $gridItem = $(this);
+            imagesLoaded(this, function() {
+                var $grid = $('.gallery');
+                var rowHeight = parseInt($grid.css('grid-auto-rows'));
+                var rowGap = parseInt($grid.css('grid-gap'));
+                var rowSpan = Math.floor(($gridItem.find('img').outerHeight() + rowGap) / (rowHeight + rowGap));
+                $gridItem.css('grid-row-end', 'span ' + rowSpan);
+            });
+        });
+
+        var $gallery = $('.gallery');
+        imagesLoaded($gallery[0], function() {
+            $('.grid-item').css('visibility', 'visible');
         });
     }
-});
 
+    // 초기 로드시 이미지 크기 조정
+    $(window).on('load', resizeGridItems);
+    $(window).on('resize', resizeGridItems);
+});
