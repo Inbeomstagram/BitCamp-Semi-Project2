@@ -18,7 +18,7 @@
 			<!-- 폼 시작 -->
 			<form id="boardWriteForm">
 			<!-- member 시퀀스 가져오기 -->
-				<input type="hidden" id="seq_member" name="seq_member" value="${sessionScope.memDTO.seq_member }"/>	
+				<input type="hidden" id="seq_member" name="seq_member" value="${sessionScope.memDTO.seq_member}"/>	
 					
 					<div class="card-content">
 					
