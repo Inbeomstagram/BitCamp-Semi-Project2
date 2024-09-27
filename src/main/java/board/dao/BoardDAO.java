@@ -64,6 +64,24 @@ public class BoardDAO {
 		
 		return boardDTO;
 	}
+
+	public void boardUpdate(BoardDTO boardDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		sqlSession.update("boardSQL.boardUpdate", boardDTO);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+	public void boardDelete(long seq_board) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		sqlSession.delete("boardSQL.boardDelete", seq_board);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
 	
 	
 	

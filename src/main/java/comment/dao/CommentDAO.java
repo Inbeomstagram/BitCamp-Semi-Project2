@@ -48,6 +48,16 @@ public class CommentDAO  {
         sqlSession.close();
         return list;
     }
+
+
+	public void hitUpdate(long seq_board) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("commentSQL.hitUpdate", seq_board);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		
+	}
 	
 }
 

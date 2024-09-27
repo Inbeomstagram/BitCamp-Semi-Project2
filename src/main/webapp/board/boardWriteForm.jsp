@@ -20,7 +20,7 @@
 			<form id="boardWriteForm">
 			<!-- member 시퀀스 가져오기 -->
 				<input type="hidden" id="seq_member" name="seq_member" value="${sessionScope.memDTO.seq_member}"/>	
-					
+				<input type="hidden" id="name" name="name" value = "${memDTO.name }"/>
 					<div class="card-content">
 					
 					<label class="image-upload"> 이미지 업로드 

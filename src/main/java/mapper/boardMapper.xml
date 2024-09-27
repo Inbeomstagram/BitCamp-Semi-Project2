@@ -5,8 +5,8 @@
  <mapper namespace="boardSQL">
  	<!-- 핀 등록 -->
  	<insert id="boardWrite" parameterType="board">
- 		INSERT INTO board (seq_board, seq_member, image, imageSubject, imageContent, hit, logtime)
-        VALUES (seq_board_id.NEXTVAL, #{seq_member}, #{image}, #{imageSubject}, #{imageContent}, 0, SYSDATE)
+ 		INSERT INTO board (seq_board, seq_member, image, name, imageSubject, imageContent, hit, logtime)
+        VALUES (seq_board_id.NEXTVAL, #{seq_member}, #{image}, #{name} ,#{imageSubject}, #{imageContent}, 0, SYSDATE)
  	</insert>
  	
  	<!-- 핀 목록 -->
@@ -32,4 +32,13 @@
  	<select id="getBoard" parameterType="long" resultType="board">
  		select * from board where seq_board=#{seq_board}
  	</select>
+ 	
+ 	<!-- 핀 수정 -->
+ 	<update id="boardUpdate" parameterType="board">
+ 		update board set image = #{image}, imageSubject = #{imageSubject}, imageContent = #{imageContent} where seq_board = #{seq_board}
+ 	</update>
+ 	
+ 	<delete id="boardDelete" parameterType="long">
+ 		DELETE FROM board WHERE seq_board = #{seq_board}
+ 	</delete>
  </mapper>
