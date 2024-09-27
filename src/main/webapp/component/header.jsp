@@ -145,4 +145,4 @@ header {
         </div>
     </header>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="js/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/member/logout.js"></script>
