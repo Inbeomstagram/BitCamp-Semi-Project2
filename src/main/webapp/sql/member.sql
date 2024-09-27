@@ -1,6 +1,6 @@
 -- 회원 생성 쿼리문
 CREATE TABLE Member (
-    seq NUMBER PRIMARY KEY,        -- 회원 고유 번호 (PK)
+    seq_member NUMBER PRIMARY KEY,        -- 회원 고유 번호 (PK)
     name VARCHAR2(100) NOT NULL,   -- 이름
     id VARCHAR2(50) UNIQUE NOT NULL, -- 아이디 (고유 값)
     password VARCHAR2(100) NOT NULL, -- 비밀번호

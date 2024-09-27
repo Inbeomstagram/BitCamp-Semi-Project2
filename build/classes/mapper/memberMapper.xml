@@ -10,8 +10,8 @@
     
     <!-- 회원가입 -->
     <insert id="join" parameterType="member.bean.MemberDTO">
-        INSERT INTO member(seq, name, id, password, gender, email, phoneNumber, zipcode, address, logtime)
-        VALUES (seq_member.NEXTVAL, #{name, jdbcType=VARCHAR}, #{id, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
+        INSERT INTO member(seq_member, name, id, password, gender, email, phoneNumber, zipcode, address, logtime)
+        VALUES (seq_member_id.NEXTVAL, #{name, jdbcType=VARCHAR}, #{id, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
                 #{gender, jdbcType=VARCHAR}, #{email, jdbcType=VARCHAR}, #{phoneNumber, jdbcType=VARCHAR},
                 #{zipcode, jdbcType=VARCHAR}, #{address, jdbcType=VARCHAR}, SYSDATE)
     </insert>
