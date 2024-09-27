@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InbeomStarGram</title>
+<title>Popular Board</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/searchPage.css">
 </head>
@@ -38,6 +38,6 @@
 		const contextPath = '${pageContext.request.contextPath}';
 	</script>
 	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/js/searchPage/searchPage.js"></script>
+		src="${pageContext.request.contextPath}/js/popularPage/popularPage.js"></script>
 </body>
 </html>

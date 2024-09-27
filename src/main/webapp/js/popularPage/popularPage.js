@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     function loadMoreData(page) {
         $.ajax({
-            url: 'searchPage.do',
+            url: 'popularPage.do',
             type: 'GET',
             data: { page: page },  // 페이지 번호 전달
             dataType: 'json',
