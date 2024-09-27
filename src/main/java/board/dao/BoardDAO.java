@@ -1,7 +1,9 @@
 package board.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -43,7 +45,17 @@ public class BoardDAO {
 		
 		return list;
 	}
-
+	
+	public List<BoardDTO>getBoardPagingList(int startRow, int endRow){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		 Map<String, Integer> params = new HashMap<>();
+	     params.put("startRow", startRow);
+	     params.put("endRow", endRow);
+	     List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardList", params);
+	     sqlSession.close();
+	     return list;
+	}
+	
 	public BoardDTO getBoard(long seq_board) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		BoardDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq_board);

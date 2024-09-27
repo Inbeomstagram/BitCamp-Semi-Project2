@@ -14,6 +14,20 @@
  		select * from board order by seq_board desc
  	</select>
  	
+ 	<select id="getBoardPagingList" resultType="board">
+ 	<![CDATA[
+        SELECT * FROM (
+            SELECT b.*, ROWNUM rnum FROM (
+                SELECT * FROM board ORDER BY seq_board DESC
+            ) b WHERE ROWNUM <= #{endRow}
+        ) WHERE rnum > #{startRow}
+        ]]>
+    </select>
+    
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*) FROM board
+    </select>
+ 	
  	<!--핀 뷰 -->
  	<select id="getBoard" parameterType="long" resultType="board">
  		select * from board where seq_board=#{seq_board}
