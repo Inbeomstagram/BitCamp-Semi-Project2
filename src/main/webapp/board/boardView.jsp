@@ -156,43 +156,45 @@ h4 {
 strong{
 font-size: 14pt;
 }
+
+.options-btn {
+    background-color: #ffffff; /* 버튼 배경색 */
+    border: none; /* 테두리 없애기 */
+    border-radius: 5px; /* 둥근 모서리 */
+    color: #333; /* 글자 색상 */
+    cursor: pointer; /* 커서 모양 변경 */
+    padding: 5px 10px; /* 버튼 안쪽 여백 */
+    font-size: 16px; /* 글자 크기 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
+}
+
+.options-btn:hover {
+    background-color: #e0e0e0; /* 호버 시 배경색 변경 */
+    color: #000; /* 호버 시 글자 색상 변경 */
+}
+
+.options-btn:focus {
+    outline: none; /* 포커스 시 아웃라인 없애기 */
+}
+
+
 </style>
-
-<script type="text/javascript">
-
- 	function onLoadpage(){
-		let seq_Board = '${boardDTO.seq_board}';
-		console.log('seq : ', seq_board);
-		
-		$.ajax({
-			type:'post',
-			url:'/Inbeomstagram/comment/commentView.do',
-			data: { 'seq_board': seq_Board },
-			dataType:'json',
-			success : function(data){
-				console.log('데이터 받아왔다 목록 : ', data)
-				updateCommentList(data.commentList);
-			},
-			error : function(e){
-				console.log("ajax 실패 : ", e);
-			}
-		});
-	}
-		
-</script>
 </head>
 <body onload="onLoadpage()">
 <jsp:include page="../component/header.jsp" />
 
-	<form id="container">
+	<form id="container" method="POST" action="${pageContext.request.contextPath}/board/boardUpdateForm.do">
 		<span class="closeBtn" onclick="closePage()" >&times;</span>
 		<input type="hidden" id="name" name="name" value="${memDTO.name}">
 		<input type="hidden" id="seq_board" name="seq_board"
 			value="${boardDTO.seq_board }">
-
+		<input type="hidden" id="image" name="image" value="${boardDTO.image}">
+		<input type="hidden" id="imageSubject" name="imageSubject" value="${boardDTO.imageSubject}">
+		<input type="hidden" id="imageContent" name="imageContent" value="${boardDTO.imageContent}">
+		<input type="hidden" id="password" name="password" value="${memDTO.password}">
 		<div id="image">
 			<img
-				src="http://localhost:8080/Inbeomstagram/storage/${boardDTO.image }" />
+				src="http://localhost:8080/Inbeomstagram/storage/${boardDTO.image }"/>
 		</div>
 		<div id="des">
 			<!-- 제목 -->
@@ -205,7 +207,7 @@ font-size: 14pt;
 			</div>
 			<!-- 작성자 -->
 			<div id="userName">
-				<h4>작성자 : ${memDTO.name }</h4>
+				<h4>작성자 : ${boardDTO.name }	</h4>
 			</div>
 			<!-- 댓글 영역 -->
 			<div id="comment-box">
@@ -225,18 +227,67 @@ font-size: 14pt;
 				<div id="comment-input">
 					<div id="commentDiv"></div>
 					<textarea id="commentContent" name="commentContent"></textarea>
-					<button type="submit" id="commentBtn">작성</button>
+					<button type="button" id="commentBtn">작성</button>
 				</div>
 
 				<div id="pin-buttons">
-					<button id="updateBtn" onclick="">핀 수정</button>
-					<button id="deleteBtn" onclick="">핀 삭제</button>
+					 <c:if test="${memDTO.seq_member == boardDTO.seq_member}">
+        				<input type="submit" id="updateBtn" value="수정"/>
+        				<input type="button" id="deleteBtn" value="삭제"/>
+    				</c:if>
 				</div>
+				
 			</div>
 		</div>
 	</form>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
+	
+    $('#deleteBtn').click(function() {
+        var confirmation = confirm("정말 삭제하시겠습니까?");
+        if (confirmation) {
+            $('#container').attr('action', '${pageContext.request.contextPath}/board/boardDelete.do');
+            $('#container').submit();
+        } else {
+            console.log("삭제가 취소되었습니다.");
+        }
+    });
+	
+	function onLoadpage(){
+		let seq_Board = '${boardDTO.seq_board}';
+		console.log('seq : ', seq_board);
+		
+		 // 게시글 조회수 증가
+		 $.ajax({
+		        type: 'post',
+		        url: '/Inbeomstagram/comment/commentHit.do', // 조회수 증가를 위한 URL
+		        data: { 'seq_board': seq_Board },
+		        dataType: 'json',
+		        success: function(response) {
+		            console.log('조회수 증가 성공: ', response);
+		        },
+		        error: function(e) {
+		            console.log("조회수 증가 AJAX 실패: ", e);
+		        }
+		    });
+		
+		// 댓글목록 뿌리기
+		$.ajax({
+			type:'post',
+			url:'/Inbeomstagram/comment/commentView.do',
+			data: { 'seq_board': seq_Board },
+			dataType:'json',
+			success : function(data){
+				console.log('데이터 받아왔다 목록 : ', data)
+				updateCommentList(data.commentList);
+			},
+			error : function(e){
+				console.log("ajax 실패 : ", e);
+			}
+		});
+		 
+	}
+	
 	function closePage() {
        window.history.back(); // 이전 페이지로 이동
     }
@@ -283,12 +334,15 @@ font-size: 14pt;
                 '<div id=comment-content>' +
                 '<strong>' + comment.name + ' : ' + '</strong>' +
                 comment.commentContent + 
-                '<button class="options-btn">⋮</button>' + '<br>' +
+                '<br>' +
                 ' (' + comment.logtime + ')' +
+                '<button class="options-btn">⋯</button>' +
                 '</div>'
             );
         });
     }
+	
+	
 	
 	</script>
 </body>

@@ -121,3 +121,16 @@ body {
 	font-size: 16px; /* 버튼 글자 크기 증가 */
 	margin-top: 10px;
 }
+
+.boardUpdateBtn{
+	padding: 15px 25px; /* 버튼 패딩 증가 */
+	background-color: #e60023;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 600;
+	text-align: center;
+	font-size: 16px; /* 버튼 글자 크기 증가 */
+	margin-top: 10px;
+}
