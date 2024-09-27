@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@font-face {
+    font-family: 'BlinkMacSystemFont-Black'; /* 폰트의 이름 정의 */
+    src: url('/Inbeomstagram/font/BlinkMacSystemFont-Black.woff') format('woff');
+    font-weight: normal; /* 폰트의 굵기 */
+    font-style: normal; /* 폰트의 스타일 */
+}
 header {
     display: flex; /* Flexbox를 사용하여 레이아웃 구성 */
     justify-content: space-between; /* 왼쪽과 오른쪽으로 요소 배치 */
@@ -18,6 +24,7 @@ header {
     width: 100%;  /* 전체 너비를 사용 */
     z-index: 1000; /* 헤더를 최상단에 표시 */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    font-family: 'BlinkMacSystemFont-Black', sans-serif;
 }
 
 .logo {
@@ -113,7 +120,7 @@ header {
 </style>
     <header>
         <div class="logo">
-            <a href="#"><!-- 홈으로 이동할 수 있는 로고 -->
+            <a href="${pageContext.request.contextPath}/index.do"><!-- 홈으로 이동할 수 있는 로고 -->
                 <img alt="home으로 이동" src="/Inbeomstagram/img/logo.png" width="100" height="30">
             </a>
             <nav class="navigation">

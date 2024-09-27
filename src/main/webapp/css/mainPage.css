@@ -1,4 +1,10 @@
-/* 모든 요소에 box-sizing을 설정 */
+@font-face {
+    font-family: 'BlinkMacSystemFont-Black'; /* 폰트의 이름 정의 */
+    src: url('/Inbeomstagram/font/BlinkMacSystemFont-Black.woff') format('woff');   /* woff 파일 경로 */
+    font-weight: normal; /* 폰트의 굵기 */
+    font-style: normal; /* 폰트의 스타일 */
+}
+
 * {
     box-sizing: border-box;
 }
@@ -8,6 +14,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;  /* 가로 스크롤을 없앰 */
+    font-family: 'BlinkMacSystemFont-Black', sans-serif;
 }
 
 /* main 요소에 상단 마진 추가하여 헤더와 겹치지 않게 함 */

@@ -38,39 +38,39 @@ $(document).ready(function() {
 
         // 이름 확인
         if ($('[name="name"]').val() == "") {
-            $('#nameDiv').html("이름을 입력하세요.");
+            $('#nameDiv').html("이름을 입력하세요.").css("color" ,"red");
             return;
         }
         // 비밀번호 확인
         if (pwdValue == "") {
-            $('#pwdDiv').html("비밀번호를 입력하세요.");
+            $('#pwdDiv').html("비밀번호를 입력하세요.").css("color" ,"red");
             return;
         } else if (!pwdRegex.test(pwdValue)) {
-            $('#pwdDiv').html("비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.");
+            $('#pwdDiv').html("비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 비밀번호 재확인
         if (pwdValue != repwdValue) {
-            $('#pwdDiv').html("비밀번호가 맞지 않습니다.");
+            $('#pwdDiv').html("비밀번호가 맞지 않습니다.").css("color" ,"red");
             return;
         }
 
         // 이메일 확인
         if (email1 == "" || email2 == "") {
-            $('#emailDiv').html("이메일을 입력하세요.");
+            $('#emailDiv').html("이메일을 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 전화번호 확인
         if (tel2 == "" || tel3 == "") {
-            $('#telDiv').html("휴대전화 번호를 정확히 입력하세요.");
+            $('#telDiv').html("휴대전화 번호를 정확히 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 주소 확인
         if (zipcode == "" || addr1 == "" || addr2 == "") {
-            $('#addrDiv').html("주소를 모두 입력하세요.");
+            $('#addrDiv').html("주소를 모두 입력하세요.").css("color" ,"red");
             return;
         }
 
