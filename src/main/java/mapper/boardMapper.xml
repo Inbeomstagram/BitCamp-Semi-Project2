@@ -45,10 +45,15 @@
  	
  	<!-- 핀 수정 -->
  	<update id="boardUpdate" parameterType="board">
- 		update board set image = #{image}, imageSubject = #{imageSubject}, imageContent = #{imageContent} where seq_board = #{seq_board}
+ 		update board set 
+ 		image = #{image}, 
+ 		imageSubject = #{imageSubject}, 
+ 		imageContent = #{imageContent} 
+ 		where seq_board = #{seq_board}
  	</update>
  	
  	<delete id="boardDelete" parameterType="long">
  		DELETE FROM board WHERE seq_board = #{seq_board}
  	</delete>
+ 	
  </mapper>
