@@ -36,6 +36,7 @@ public class BoardWriteService implements CommandProcess {
 
 		long seq_member = Long.parseLong(multipartRequest.getParameter("seq_member"));
 		String image = multipartRequest.getOriginalFileName("image");
+		String name = multipartRequest.getParameter("name");
 		String imageSubject = multipartRequest.getParameter("imageSubject");
 		String imageContent = multipartRequest.getParameter("imageContent");
 
@@ -46,6 +47,7 @@ public class BoardWriteService implements CommandProcess {
 		BoardDTO boardDTO = new BoardDTO();
 
 		boardDTO.setSeq_member(seq_member);
+		boardDTO.setName(name);
 		boardDTO.setImage(image);
 		boardDTO.setImageSubject(imageSubject);
 		boardDTO.setImageContent(imageContent);

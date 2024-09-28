@@ -12,14 +12,17 @@ import board.dao.BoardDAO;
 import control.CommandProcess;
 
 public class SearchPageService implements CommandProcess {   
-	private static final int page_size = 10; // 페이지당 항목 수
+	private static final int page_size = 20; // 페이지당 항목 수
 
 	@Override
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {		
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		request.setCharacterEncoding("UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    response.setContentType("application/json; charset=UTF-8");
 		int page = Integer.parseInt(request.getParameter("page")!=null?request.getParameter("page"):"1");  // default는 1페이지
-		int startRow = (page-1)*page_size+1;
-		int endRow = page*page_size;
-		
+		int startRow = (page - 1) * page_size;  // 0 기반으로 계산
+		int endRow = page * page_size;  // 마지막 행은 그대로
+		System.out.println("page: "+page);
 		List<BoardDTO>list = BoardDAO.getInstance().getBoardPagingList(startRow, endRow);
 		
 		 
@@ -28,9 +31,8 @@ public class SearchPageService implements CommandProcess {
             Gson gson = new Gson();
             String jsonData = gson.toJson(list);
             response.getWriter().write(jsonData);
-            return null;
+            return "none";
         }
-        System.out.println("hello");
         request.setAttribute("list", list);
         return "/searchPage/searchPage.jsp"; 
 	}

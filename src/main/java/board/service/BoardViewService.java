@@ -22,6 +22,7 @@ public class BoardViewService implements CommandProcess {
 		
 		request.setAttribute("boardDTO", boardDTO);
 		
+		
 		return "/board/boardView.jsp";
 	}
 

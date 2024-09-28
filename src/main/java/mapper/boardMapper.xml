@@ -2,50 +2,51 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="boardSQL">
 	<!-- 핀 등록 -->
 	<insert id="boardWrite" parameterType="board">
-		INSERT INTO board
-		(seq_board, seq_member, image, imageSubject, imageContent,
-		hit,
-		logtime)
-		VALUES (seq_board_id.NEXTVAL, #{seq_member}, #{image},
-		#{imageSubject},
-		#{imageContent}, 0, SYSDATE)
+		INSERT INTO board (seq_board, seq_member, image, name, imageSubject,
+		imageContent, hit, logtime)
+		VALUES (seq_board_id.NEXTVAL, #{seq_member}, #{image}, #{name}
+		,#{imageSubject}, #{imageContent}, 0, SYSDATE)
 	</insert>
 
 	<!-- 핀 목록 -->
 	<select id="getBoardList" resultType="board">
-		select * from board order
-		by seq_board desc
+		select * from board order by seq_board desc
 	</select>
 
-
 	<select id="getBoardPagingList" resultType="board">
- 	<![CDATA[
+
+    <![CDATA[
         SELECT * FROM (
             SELECT b.*, ROWNUM rnum FROM (
                 SELECT * FROM board ORDER BY seq_board DESC
             ) b WHERE ROWNUM <= #{endRow}
         ) WHERE rnum > #{startRow}
         ]]>
+
 	</select>
 
-
-	<select id="searchBoardPagingList" parameterType="map"
-		resultType="board">
-			<![CDATA[
-				SELECT *
-				FROM (
-				    SELECT board.*, ROW_NUMBER() OVER (ORDER BY seq_board DESC) AS rnum
-				    FROM board
-				    WHERE imagesubject LIKE '%' || #{keyword} || '%'
-				    OR imagecontent LIKE '%' || #{keyword} || '%'
-				)
-				WHERE rnum BETWEEN #{startRow} AND #{endRow}
-		  ]]>
+	<select id="searchBoardPagingList" parameterType="map" resultType="board">
+	<![CDATA[ 
+		SELECT * FROM (
+			SELECT board.*, ROW_NUMBER()
+			OVER (ORDER BY seq_board DESC)
+			AS rnum FROM board WHERE
+			imagesubject LIKE '%' || #{keyword} || '%' OR imagecontent LIKE '%' || #{keyword} || '%' ) WHERE rnum BETWEEN #{startRow} AND #{endRow} ]]>
 	</select>
 
+	<select id="getBoardPopularPagingList" resultType="board">
+    <![CDATA[
+        SELECT * FROM (
+            SELECT b.*, ROWNUM rnum FROM (
+                SELECT * FROM board ORDER BY hit DESC
+            ) b WHERE ROWNUM <= #{endRow}
+        ) WHERE rnum > #{startRow}
+        ]]>
+	</select>
 
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM board
@@ -53,13 +54,25 @@
 
 	<!--핀 뷰 -->
 	<select id="getBoard" parameterType="long" resultType="board">
-		select *
-		from board where seq_board=#{seq_board}
+		select * from board where seq_board=#{seq_board}
 	</select>
 
-	<!-- 마이페이지 내 게시물 -->
+	<!-- 핀 수정 -->
+	<update id="boardUpdate" parameterType="board">
+		update board set
+		image = #{image},
+		imageSubject = #{imageSubject},
+		imageContent = #{imageContent}
+		where seq_board = #{seq_board}
+	</update>
+
 	<select id="getMyBoardList" parameterType="long"
 		resultType="board">
 		select * from board where seq_member = #{seq_member}
 	</select>
+
+	<delete id="boardDelete" parameterType="long">
+		DELETE FROM board WHERE seq_board = #{seq_board}
+	</delete>
+
 </mapper>

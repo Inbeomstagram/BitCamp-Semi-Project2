@@ -3,7 +3,9 @@ body {
 	font-family: Arial, sans-serif;
 	background-color: #ffffff;
 }
-
+* {
+    box-sizing: border-box;
+}
 /* 전체 컨테이너 */
 .container {
 	display: flex;
@@ -108,6 +110,19 @@ body {
 }
 
 .boardWriteBtn {
+	padding: 15px 25px; /* 버튼 패딩 증가 */
+	background-color: #e60023;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: 600;
+	text-align: center;
+	font-size: 16px; /* 버튼 글자 크기 증가 */
+	margin-top: 10px;
+}
+
+.boardUpdateBtn{
 	padding: 15px 25px; /* 버튼 패딩 증가 */
 	background-color: #e60023;
 	color: #fff;
