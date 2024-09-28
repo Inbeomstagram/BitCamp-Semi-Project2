@@ -2,6 +2,7 @@ package comment.dao;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -43,11 +44,44 @@ public class CommentDAO  {
 
 	
     public List<CommentDTO> commentList(long seq_board) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+    	SqlSession sqlSession = sqlSessionFactory.openSession();
         List<CommentDTO> list = sqlSession.selectList("commentSQL.commentList", seq_board);
         sqlSession.close();
         return list;
     }
+
+
+	public void hitUpdate(long seq_board) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("commentSQL.hitUpdate", seq_board);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		
+	}
+
+
+	public void commentDelete(long seq_comment) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		sqlSession.delete("commentSQL.commentDelete", seq_comment);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+
+	public void commentUpdate(Map<String, Object> map) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		sqlSession.update("commentSQL.commentUpdate", map);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+
+	
 	
 }
 
