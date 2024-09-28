@@ -25,6 +25,7 @@
 						<img src="http://localhost:8080/Inbeomstagram/storage/${image}" 
 						style="width: 300px; height: 410px; border-radius: 8px; cursor: pointer;" 
 						id="selectedImage" alt="이미지"/>
+						<input type="hidden" id="imageDivHidden" name ="imageDivHidden" value="${image}">
 					</div>
 					<!-- 실제 파일 업로드 input을 숨겨두기 -->
 					<input type="file" name="image" id="image" style="display:none;"/>

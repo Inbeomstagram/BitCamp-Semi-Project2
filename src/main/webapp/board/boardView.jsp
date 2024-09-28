@@ -166,6 +166,7 @@
 	}
 	   
 	$(function(){
+		var name = '${sessionScope.memDTO.name}';
 		$('#commentBtn').click(function(){
 			event.preventDefault();
 			if($('#commentContent').val() == ''){
@@ -176,7 +177,7 @@
 					url : '/Inbeomstagram/comment/commentWrite.do',
 					data : {
 						'commentContent' : $('#commentContent').val(),
-						'name' : $('#name').val(),
+						'name': name,
 						'seq_board' : $('#seq_board').val()
 					},
 					dataType:'json',
@@ -200,6 +201,7 @@
 	});
 
 	function updateCommentList(commentList) {
+		var name = '${sessionScope.memDTO.name}';
 	    $('#comment-list').empty(); // 기존 댓글 목록을 지우고 새로 추가
 	    commentList.forEach(function(comment) {
 	        var commentHtml = 
@@ -207,7 +209,7 @@
 	            '<strong>' + comment.name + ' : </strong>' +
 	            comment.commentContent + '<br>(' + comment.logtime + ')';
 
-	        if (comment.name === $('#name').val()) {
+	        if (comment.name === name) {
 	            commentHtml += 
 	                '<button class="options-btn" data-seq="' + comment.seq_comment + '">⋯</button>';
 	        }

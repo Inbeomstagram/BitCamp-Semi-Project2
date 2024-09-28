@@ -92,7 +92,13 @@ public class BoardDAO {
 		sqlSession.close();
 		
 	}
-	
+	public void boardUpdateNotImage(BoardDTO boardDTO) {
+	      SqlSession sqlSession = sqlSessionFactory.openSession();
+	      
+	      sqlSession.update("boardSQL.boardUpdateNotImage", boardDTO);
+	      sqlSession.commit();
+	      sqlSession.close();
+	   }
 	
 	
 }

@@ -5,7 +5,7 @@ function handleLogin(event) {
 
     if($('#loginId').val() == '')
         $('#loginIdDiv').html('아이디 입력');
-    else if($('#password').val() == '')
+    else if($('#loginPassword').val() == '')
         $('#loginPwdDiv').html('비밀번호 입력');
     else
         $.ajax({
