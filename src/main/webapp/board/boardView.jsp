@@ -213,6 +213,7 @@ font-size: 14pt;
 				<div id="comment-num">댓글 2개</div>
 				<!-- 댓글 내용 -->
 				<div id="comment-list">
+					
 				    <c:forEach var="comment" items="${commentList}">
 				        <div>
 				            <strong>${comment.name}</strong> : ${comment.commentContent} (${comment.logtime})

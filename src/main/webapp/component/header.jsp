@@ -135,7 +135,7 @@ header {
             <c:if test="${not empty sessionScope.memDTO}">
                 <div class="search-box">
                     <img src="/Inbeomstagram/img/serch.jpg" alt="serch">
-                    <input type="text" placeholder="검색">
+                    <input type="text" name="searchKeyword" id="searchKeyword" placeholder="검색에 필요한 제목을 기입해주세요">
                 </div>
             </c:if>
         </div>
@@ -153,3 +153,4 @@ header {
     </header>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/member/logout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/searchPage/subjectSearchPage.js"></script>

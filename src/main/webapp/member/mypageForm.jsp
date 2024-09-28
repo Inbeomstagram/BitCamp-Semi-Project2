@@ -8,11 +8,12 @@
 <title>InbeomStarGram</title>
 <link rel="stylesheet" href="../css/mypage.css">
 </head>
-<body>
+<body onload="onLoadmypage()">
 <jsp:include page="../component/header.jsp" />
+<form id="mypage">
 	<div class="mypage">
 		<div class="profile">
-			<input type="submit" value="W" class="submitprofile"/>
+			<input type="submit" value="H" class="submitprofile"/>
 		</div>
 		<div class="username">
 			${memDTO.name }
@@ -29,15 +30,56 @@
 			<a href="${pageContext.request.contextPath}/member/updateForm.do"><input type="button" value="프로필 수정"/></a>
 		</div>
 		<div class="save">
-			저장됨
+			생성됨
 			<hr>
 		</div>
-		<div> <!-- 저장된 핀이 없을 경우 만 노출되게 해야함 -->
-			아직 저장된 핀이 없네요! 저장하고 싶은 핀들을 저장하세요!
-		</div>
-		<div class="pincreation">
-			<a href="${pageContext.request.contextPath}/board/boardWriteForm.do"><input type="button" value="핀 만들기"/></a>
-		</div>
+		<!-- 작성한 이미지 출력 -->
+		<div id="boardbody">
+        	<div id="board-list">
+
+        	</div>
+        </div>
 	</div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    let seq_member = '${memDTO.seq_member}';
+    $.ajax({
+        type: "POST",
+        url: "/Inbeomstagram/member/mypageSup.do",
+        data: { 'seq_member': seq_member },
+        dataType: 'json',
+        success: function(data) {
+            console.log("데이터 : ", data);
+            
+            let boardList = $("#board-list");
+            boardList.empty();
+            
+            if (data.mypagelist && data.mypagelist.length > 0) {
+                data.mypagelist.forEach(function(item) {
+                	
+                    let imageUrl = "http://localhost:8080/Inbeomstagram/storage/" + item.image;
+
+                    let imgElement = $("<img>").attr("src", imageUrl).addClass("mypage-image");
+
+                    boardList.append(imgElement);
+                });
+            } else {
+                boardList.append("<p>아직 저장된 핀이 없네요! 저장하고 싶은 핀들을 저장하세요!</p>");
+                
+                let createPinButton = $("<button type='button'>").text("핀 만들기").addClass("create-pin-button");
+                createPinButton.on("click", function() {
+                    window.location.href = "${pageContext.request.contextPath}/board/boardWriteForm.do";
+                });
+                boardList.append(createPinButton);
+            }
+        },
+        error: function(e) {
+            console.log('실패', e);
+        }
+    });
+});
+</script>
 </body>
 </html>

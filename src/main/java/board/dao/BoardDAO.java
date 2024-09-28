@@ -15,16 +15,16 @@ import board.bean.BoardDTO;
 public class BoardDAO {
 	private SqlSessionFactory sqlSessionFactory;
 	private static BoardDAO instance = new BoardDAO();
-	
+
 	public static BoardDAO getInstance() {
 		return instance;
 	}
-	
+
 	public BoardDAO() {
 		try {
 			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
@@ -35,36 +35,50 @@ public class BoardDAO {
 		sqlSession.insert("boardSQL.boardWrite", boardDTO);
 		sqlSession.commit();
 		sqlSession.close();
-		
+
 	}
 
 	public List<BoardDTO> getBoardList() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardList");
 		sqlSession.close();
-		
+
 		return list;
 	}
 	
-	public List<BoardDTO>getBoardPagingList(int startRow, int endRow){
+
+	public List<BoardDTO> getBoardPagingList(int startRow, int endRow) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		 Map<String, Integer> params = new HashMap<>();
-	     params.put("startRow", startRow);
-	     params.put("endRow", endRow);
-	     List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardList", params);
-	     sqlSession.close();
-	     return list;
+		Map<String, Integer> params = new HashMap<>();
+		params.put("startRow", startRow);
+		params.put("endRow", endRow);
+		List<BoardDTO> list = sqlSession.selectList("boardSQL.getBoardList", params);
+		sqlSession.close();
+		return list;
 	}
-	
+
 	public BoardDTO getBoard(long seq_board) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		BoardDTO boardDTO = sqlSession.selectOne("boardSQL.getBoard", seq_board);
 		sqlSession.close();
-		
-		
+
 		return boardDTO;
 	}
-	
-	
-	
+
+	public List<BoardDTO> getMyBoardList(long seq_member) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<BoardDTO> list = sqlSession.selectList("boardSQL.getMyBoardList", seq_member);
+		sqlSession.close();
+
+		return list;
+	}
+
+	public List<BoardDTO> searchBoardPagingList(Map<String, Object> map) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+
+		List<BoardDTO> list = sqlSession.selectList("boardSQL.searchBoardPagingList", map);
+		sqlSession.close();
+		return list;
+	}
+
 }

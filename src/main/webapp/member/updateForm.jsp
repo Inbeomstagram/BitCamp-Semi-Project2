@@ -12,7 +12,7 @@
 <jsp:include page="../component/header.jsp" />
 <form name="updateForm" id="updateForm">
 	<div class="updatepage">
-		<div class="updatepagebody" style="border : 1px solid">
+		<div class="updatepagebody">
 			<div class="container">
 				<div class="coment">
 					<h1>
