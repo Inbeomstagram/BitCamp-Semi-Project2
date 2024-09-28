@@ -56,4 +56,11 @@
  		DELETE FROM board WHERE seq_board = #{seq_board}
  	</delete>
  	
+ 	<update id="boardUpdateNotImage" parameterType="board">
+       update board set
+       imageSubject = #{imageSubject}, 
+       imageContent = #{imageContent} 
+       where seq_board = #{seq_board}
+    </update>
+ 	
  </mapper>
