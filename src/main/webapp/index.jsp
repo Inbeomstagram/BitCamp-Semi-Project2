@@ -15,7 +15,6 @@
         <c:otherwise>
             <c:redirect url="/searchPage/searchPage.do" />
         </c:otherwise>
-    </c:choose>    
-    <script type="text/javascript" src="js/member/delete.js"></script>
+    </c:choose>   
 </body>
 </html>
