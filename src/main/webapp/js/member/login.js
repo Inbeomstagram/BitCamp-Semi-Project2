@@ -1,18 +1,19 @@
-function handleLogin() {
-    $('#idDiv').empty();
-    $('#pwdDiv').empty();
+function handleLogin(event) {
+    event.preventDefault(); // 기본 폼 제출 이벤트 방지
+    $('#loginIdDiv').empty();
+    $('#loginPwdDiv').empty();
 
-    if($('#id').val() == '')
-        $('#idDiv').html('아이디 입력');
+    if($('#loginId').val() == '')
+        $('#loginIdDiv').html('아이디 입력');
     else if($('#password').val() == '')
-        $('#pwdDiv').html('비밀번호 입력');
+        $('#loginPwdDiv').html('비밀번호 입력');
     else
         $.ajax({
             type: 'post',
             url: '/Inbeomstagram/member/login.do',  // URL은 pageContext가 없으므로 절대 경로로 변경
             data: {
-                'id': $('#id').val(),
-                'password': $('#password').val()
+                'id': $('#loginId').val(),
+                'password': $('#loginPassword').val()
             },
             dataType: 'text',
             success: function(data){
