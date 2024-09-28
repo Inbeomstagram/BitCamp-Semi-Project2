@@ -59,4 +59,4 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member/logout.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/searchPage/subjectSearchPage.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/header/header.js"></script>
