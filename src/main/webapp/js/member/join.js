@@ -60,8 +60,9 @@ function checkJoin() {
     document.getElementById("telDiv").innerHTML = "";
     document.getElementById("addrDiv").innerHTML = "";
 
+    var name = document.getElementById("name").value;
     var idValue = document.getElementById("id").value;
-    var pwdValue = document.getElementById("pwd").value;
+    var pwdValue = document.getElementById("password").value;
     var repwdValue = document.getElementById("repwd").value;
     var email1 = document.getElementsByName("email1")[0].value;
     var email2 = document.getElementById("email2").value;
@@ -72,26 +73,31 @@ function checkJoin() {
     var addr2 = document.getElementById("addr2").value;
 
     // 이름 확인
-    if (document.joinForm.name.value == "") {
+    if (name == "") {
         document.getElementById("nameDiv").innerHTML = "이름을 입력하세요.";
+        document.getElementById("name").focus(); // Focus on name input
         return;
     }
 
     // 아이디 확인
     if (idValue == "") {
         document.getElementById("idDiv").innerHTML = "아이디를 입력하세요.";
+        document.getElementById("id").focus(); // Focus on id input
         return;
     } else if (!idRegex.test(idValue)) {
         document.getElementById("idDiv").innerHTML = "아이디는 영문, 숫자 조합으로 50자 이내로 입력하세요.";
+        document.getElementById("id").focus(); // Focus on id input
         return;
     }
 
     // 비밀번호 확인
     if (pwdValue == "") {
         document.getElementById("pwdDiv").innerHTML = "비밀번호를 입력하세요.";
+        document.getElementById("password").focus(); // Focus on password input
         return;
     } else if (!pwdRegex.test(pwdValue)) {
         document.getElementById("pwdDiv").innerHTML = "비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.";
+        document.getElementById("password").focus(); // Focus on password input
         return;
     }
 
@@ -104,24 +110,28 @@ function checkJoin() {
     // 아이디 중복 체크 여부 확인
     if (idValue != document.getElementById("check").value) {
         document.getElementById("idDiv").innerHTML = "중복체크를 하세요.";
+        document.getElementById("id").focus(); // Focus on id input
         return;
     }
 
     // 이메일 확인
     if (email1 == "" || email2 == "") {
         document.getElementById("emailDiv").innerHTML = "이메일을 입력하세요.";
+        document.getElementsByName("email1")[0].focus(); // Focus on email1 input
         return;
     }
 
     // 전화번호 확인
     if (tel2 == "" || tel3 == "") {
         document.getElementById("telDiv").innerHTML = "휴대전화 번호를 정확히 입력하세요.";
+        document.getElementsByName("tel2")[0].focus(); // Focus on tel2 input
         return;
     }
 
     // 주소 확인
     if (zipcode == "" || addr1 == "" || addr2 == "") {
         document.getElementById("addrDiv").innerHTML = "주소를 모두 입력하세요.";
+        document.getElementById("zipcode").focus(); // Focus on zipcode input
         return;
     }
 
@@ -139,6 +149,7 @@ function checkJoin() {
         }
     });
 }
+
 
 
 //우편번호 - Daum API

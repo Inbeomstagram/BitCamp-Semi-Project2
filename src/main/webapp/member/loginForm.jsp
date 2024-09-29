@@ -29,8 +29,6 @@
 						<div id="loginResult"></div>
 						<button type="submit" class="btn btn-primary" id="loginBtn"
 							onclick="handleLogin()">로그인</button>
-						<input type="button" value="회원가입"
-							onclick="location.href='${pageContext.request.contextPath}/member/'" />
 					</div>
 				</form>
 			</div>

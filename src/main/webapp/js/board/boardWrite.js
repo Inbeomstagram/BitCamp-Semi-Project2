@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
    $('#image').on('change', function(event) {
       const file = event.target.files[0];
       if (file) {
@@ -20,6 +21,7 @@ $(document).ready(function() {
 
 // X 버튼시 인덱스로 이동
 $('.closeBtn').click(function() {
+
     window.history.back(); // 이전 페이지로 이동
 });
 
