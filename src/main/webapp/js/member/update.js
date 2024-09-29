@@ -1,76 +1,76 @@
-var pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,100}$/; // 비밀번호는 8자 이상
+var updatepwdRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,100}$/; // 비밀번호는 8자 이상
 // 비밀번호 검증
-$('#pwd').focusout(function() {
-    var pwdValue = $('#pwd').val();
-    $('#pwdDiv').empty();
+$('#updatepwd').focusout(function() {
+    var updatepwdValue = $('#updatepwd').val();
+    $('#updatepwdDiv').empty();
     
-    if (!pwdRegex.test(pwdValue)) {
-        $('#pwdDiv').html('비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.').css('color', 'red');
+    if (!updatepwdRegex.test(updatepwdValue)) {
+        $('#updatepwdDiv').html('비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.').css('color', 'red');
     } else {
-        $('#pwdDiv').html('사용 가능한 비밀번호입니다.').css('color', 'blue');
+        $('#updatepwdDiv').html('사용 가능한 비밀번호입니다.').css('color', 'blue');
     }
 });
 
 //이메일
 function change() {
-	document.getElementById("email2").value = document.getElementById("email3").value;
+	document.getElementById("updateemail2").value = document.getElementById("updateemail3").value;
 }
 
 
 // 회원정보 수정
 $(document).ready(function() {
-    $('#updateBtn').click(function(){
-        $('#nameDiv').html("");
-        $('#pwdDiv').html("");
-        $('#emailDiv').html("");
-        $('#telDiv').html("");
-        $('#addrDiv').html("");
+    $('#updatebutton').click(function(){
+        $('#updatenameDiv').html("");
+        $('#updatepwdDiv').html("");
+        $('#updateemailDiv').html("");
+        $('#updatetelDiv').html("");
+        $('#updateaddrDiv').html("");
 
-        var pwdValue = $('#pwd').val();
-        var repwdValue = $('#repwd').val();
-        var email1 = $('[name="email1"]').val();
-        var email2 = $('#email2').val();
-        var tel2 = $('[name="tel2"]').val();
-        var tel3 = $('[name="tel3"]').val();
-        var zipcode = $('#zipcode').val();
-        var addr1 = $('#addr1').val();
-        var addr2 = $('#addr2').val();
+        var pwdValue = $('#updatepwd').val();
+        var repwdValue = $('#updaterepwd').val();
+        var email1 = $('#updateemil1').val();
+        var email2 = $('#updateemail2').val();
+        var tel2 = $('#updatetel2').val();
+        var tel3 = $('#updatetel3').val();
+        var zipcode = $('#updatezipcode').val();
+        var addr1 = $('#updateaddr1').val();
+        var addr2 = $('#updateaddr2').val();
 
         // 이름 확인
-        if ($('[name="name"]').val() == "") {
-            $('#nameDiv').html("이름을 입력하세요.").css("color" ,"red");
+        if ($('#updatename').val() == "") {
+            $('#updatenameDiv').html("이름을 입력하세요.").css("color" ,"red");
             return;
         }
         // 비밀번호 확인
         if (pwdValue == "") {
-            $('#pwdDiv').html("비밀번호를 입력하세요.").css("color" ,"red");
+            $('#updatepwdDiv').html("비밀번호를 입력하세요.").css("color" ,"red");
             return;
         } else if (!pwdRegex.test(pwdValue)) {
-            $('#pwdDiv').html("비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.").css("color" ,"red");
+            $('#updatepwdDiv').html("비밀번호는 영문, 숫자, 특수문자 포함 8자 이상, 100자 이내로 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 비밀번호 재확인
         if (pwdValue != repwdValue) {
-            $('#pwdDiv').html("비밀번호가 맞지 않습니다.").css("color" ,"red");
+            $('#updatepwdDiv').html("비밀번호가 맞지 않습니다.").css("color" ,"red");
             return;
         }
 
         // 이메일 확인
         if (email1 == "" || email2 == "") {
-            $('#emailDiv').html("이메일을 입력하세요.").css("color" ,"red");
+            $('#updateemailDiv').html("이메일을 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 전화번호 확인
         if (tel2 == "" || tel3 == "") {
-            $('#telDiv').html("휴대전화 번호를 정확히 입력하세요.").css("color" ,"red");
+            $('#updatetelDiv').html("휴대전화 번호를 정확히 입력하세요.").css("color" ,"red");
             return;
         }
 
         // 주소 확인
         if (zipcode == "" || addr1 == "" || addr2 == "") {
-            $('#addrDiv').html("주소를 모두 입력하세요.").css("color" ,"red");
+            $('#updateaddrDiv').html("주소를 모두 입력하세요.").css("color" ,"red");
             return;
         }
 
@@ -111,10 +111,10 @@ function checkPost() {
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('zipcode').value = data.zonecode;
-            document.getElementById("addr1").value = addr;
+            document.getElementById('updatezipcode').value = data.zonecode;
+            document.getElementById("updateaddr1").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("addr2").focus();
+            document.getElementById("updateaddr2").focus();
         }
     }).open();
 }

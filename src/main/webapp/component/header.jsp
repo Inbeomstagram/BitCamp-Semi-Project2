@@ -16,22 +16,20 @@
 			<img alt="home으로 이동" src="/Inbeomstagram/img/logo.png" width="100"
 			height="30">
 		</a>
-		<nav class="navigation">
-			<ul>
-				<li><a href="#">탐색</a></li>
-				<!-- 탐색 버튼 -->
-			</ul>
-		</nav>
 	</div>
 
 	<!-- 검색할 수 있는 영역 (로그인 시 노출) -->
 	<div class="search-area">
 		<c:if test="${not empty sessionScope.memDTO}">
-			<div class="search-box">
-
-				<img src="/Inbeomstagram/img/serch.jpg" alt="serch"> <input
-					type="text" placeholder="검색">
-			</div>
+			<nav class="navigation">
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/board/boardWriteForm.do">핀 생성</a></li>
+				</ul>
+			</nav>
+                <div class="search-box">
+                    <img src="/Inbeomstagram/img/serch.jpg" alt="serch">
+                    <input type="text" name="searchKeyword" id="searchKeyword" placeholder="검색에 필요한 제목을 기입해주세요">
+                </div>
 		</c:if>
 	</div>
 
@@ -59,3 +57,5 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member/logout.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/header/header.js"></script>
