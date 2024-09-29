@@ -22,14 +22,15 @@
 				<!-- 탐색 버튼 -->
 			</ul>
 		</nav>
-	</div>	
+	</div>
 
 	<!-- 검색할 수 있는 영역 (로그인 시 노출) -->
 	<div class="search-area">
 		<c:if test="${not empty sessionScope.memDTO}">
 			<div class="search-box">
-				<img src="/Inbeomstagram/img/serch.jpg" alt="serch">
-				<input type="text" name="searchKeyword" id="searchKeyword" placeholder="검색에 필요한 제목을 기입해주세요">
+
+				<img src="/Inbeomstagram/img/serch.jpg" alt="serch"> <input
+					type="text" placeholder="검색">
 			</div>
 		</c:if>
 	</div>
@@ -47,18 +48,14 @@
 				class="info">${memDTO.name }님</a>
 			<button onclick="logout()" class="logout">로그아웃</button>
 		</c:if>
-	</div>
-	<jsp:include page="../member/loginForm.jsp" />
-	<jsp:include page="../member/joinForm.jsp" />
+	</div>	
 </header>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<jsp:include page="../member/loginForm.jsp" />
+<jsp:include page="../member/joinForm.jsp" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="text/javascript"	
+<script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/member/logout.js"></script>
-	<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/header/header.js"></script>
-	
