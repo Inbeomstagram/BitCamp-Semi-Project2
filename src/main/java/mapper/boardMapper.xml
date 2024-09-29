@@ -62,5 +62,21 @@
        imageContent = #{imageContent} 
        where seq_board = #{seq_board}
     </update>
- 	
- </mapper>
+    
+    <!--  마이페이지 내 게시물  -->
+	<select id="getMyBoardList" parameterType="long" resultType="board">
+	 	select * from board where seq_member = #{seq_member}
+	</select>
+	
+	<select id="searchBoardPagingList" parameterType="map" resultType="board">
+	<![CDATA[
+	 	SELECT * FROM (
+	 	 SELECT board.*, ROW_NUMBER()
+	 	 OVER (ORDER BY seq_board DESC) AS rnum
+	 	 FROM board WHERE imagesubject
+	 	 LIKE '%' || #{keyword} || '%' OR
+	 	 imagecontent LIKE '%' || #{keyword} || '%' )
+	 	 WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	 ]]>
+	</select>
+</mapper>

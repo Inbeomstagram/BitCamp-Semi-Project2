@@ -10,6 +10,7 @@ CREATE TABLE board (
     CONSTRAINT fk_board_member
     FOREIGN KEY(seq_member)
     REFERENCES member(seq_member)
+    ON DELETE CASCADE
 );
 -- board PK 시퀀스
 CREATE SEQUENCE seq_board_id START WITH 1 INCREMENT BY 1;

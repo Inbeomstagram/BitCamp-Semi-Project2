@@ -99,6 +99,21 @@ public class BoardDAO {
 	      sqlSession.commit();
 	      sqlSession.close();
 	   }
+
+	public List<BoardDTO> getMyBoardList(long seq_member) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<BoardDTO> list = sqlSession.selectList("boardSQL.getMyBoardList", seq_member);
+		sqlSession.close();
+
+		return list;
+	}
+
+	public List<BoardDTO> searchBoardPagingList(Map<String, Object> map) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<BoardDTO> list = sqlSession.selectList("boardSQL.searchBoardPagingList", map);
+		sqlSession.close();
+		return list;
+	}
 	
 	
 }
