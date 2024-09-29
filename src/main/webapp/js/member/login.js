@@ -3,10 +3,14 @@ function handleLogin(event) {
     $('#loginIdDiv').empty();
     $('#loginPwdDiv').empty();
 
-    if($('#loginId').val() == '')
-        $('#loginIdDiv').html('아이디 입력');
-    else if($('#loginPassword').val() == '')
-        $('#loginPwdDiv').html('비밀번호 입력');
+    if($('#loginId').val() == ''){
+		$('#loginIdDiv').html('아이디 입력');
+				document.getElementById("id").focus();
+	}        
+    else if($('#loginPassword').val() == ''){
+		$('#loginPwdDiv').html('비밀번호 입력');
+		document.getElementById("loginPwdDiv").focus();	
+	}        
     else
         $.ajax({
             type: 'post',

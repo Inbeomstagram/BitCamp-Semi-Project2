@@ -28,6 +28,7 @@
 	<div class="search-area">
 		<c:if test="${not empty sessionScope.memDTO}">
 			<div class="search-box">
+
 				<img src="/Inbeomstagram/img/serch.jpg" alt="serch"> <input
 					type="text" placeholder="검색">
 			</div>
@@ -39,8 +40,6 @@
 			<a href="#" class="login" data-toggle="modal" data-target="#loginModal">로그인</a>
 			<a href="#" class="signup" data-toggle="modal" data-target="#joinModal">가입하기</a>
 		</c:if>
-		
-
 		<c:if test="${not empty sessionScope.memDTO}">
 			<a
 				href="${pageContext.request.contextPath}/popularPage/popularPage.do"
@@ -49,11 +48,10 @@
 				class="info">${memDTO.name }님</a>
 			<button onclick="logout()" class="logout">로그아웃</button>
 		</c:if>
-	</div>
-	<jsp:include page="../member/loginForm.jsp" />
-	<jsp:include page="../member/joinForm.jsp" />
+	</div>	
 </header>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<jsp:include page="../member/loginForm.jsp" />
+<jsp:include page="../member/joinForm.jsp" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
