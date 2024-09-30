@@ -55,13 +55,24 @@
 - Bootstrap을 이용한 modal 방식으로 구현
 ![logout](https://github.com/user-attachments/assets/0dcda1a4-5a67-40e8-a7a3-3850b6d32317)
 
-- **로그인 후 탐색 페이지**
+- **로그인 후 탐색 페이지**<br>
+![searchPage-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c573644a-e4c6-4e3d-a78a-1effe2a4f605)
 
-- **마이 페이지 & 프로필 수정**
+- **마이 페이지 & 프로필 수정**<br>
 ![myPage](https://github.com/user-attachments/assets/7df06745-2d2d-46d4-9ab3-1e1dc3bd543e)
 ![updateProfile](https://github.com/user-attachments/assets/60fc3ffd-a701-4e72-8d01-0098ea89aac2)
 
+- **게시판 생성, 수정, 삭제**<br>
+![createBoard-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/6e190233-846c-4d41-8b66-3e4bd2288d49)
+![boardUpdate-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/5b682be9-2f0e-4c17-bb9f-46493e7fe883)
+![boardDelete-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/68214184-07b2-414f-b8ec-23ba7a80ac24)
 
+- **댓글 생성, 수정, 삭제**<br>
+![board_commentAdd-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/5ec488d2-1386-4370-a851-b18e59dd5e29)
+![commentUpdate-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/35e1c73d-be92-4be5-b99f-a0923b2c3124)
+![commentDelete-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/9c3bf3e9-da9b-4826-9e52-e754ab79805f)
+
+  
 ## 기술 스택
 - **프론트엔드**: HTML, CSS, JavaScript (jQuery), Bootstrap
 - **백엔드**: Java, MyBatis
