@@ -19,9 +19,13 @@ public class PopularPageService implements CommandProcess {
 		request.setCharacterEncoding("UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    response.setContentType("application/json; charset=UTF-8");
-		int page = Integer.parseInt(request.getParameter("page")!=null?request.getParameter("page"):"1");  // default는 1페이지
-		int startRow = (page - 1) * page_size;  // 0 기반으로 계산
-		int endRow = page * page_size;  // 마지막 행은 그대로
+	 // 페이지 번호 파라미터 확인
+        String pageParam = request.getParameter("page");
+        int page = (pageParam != null) ? Integer.parseInt(pageParam) : 1;  // page 파라미터가 없으면 1로 처리
+        System.out.println("page : "+page);
+        // 데이터 페이징 처리
+        int startRow = (page - 1) * page_size;  // 0 기반으로 계산
+        int endRow = page * page_size;  // 마지막 행은 그대로
 		
 		List<BoardDTO>list = BoardDAO.getInstance().getBoardPopularPagingList(startRow, endRow);
 		

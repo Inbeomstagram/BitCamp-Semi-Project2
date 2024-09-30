@@ -1,16 +1,13 @@
 $(document).ready(function() {
-    let currentPage = 1;
+    let currentPage = 2;  // 1페이지는 서버에서 로드됐으므로 2페이지부터 시작
     let loading = false;
-
-    // 첫 페이지 데이터 로드
-    loadMoreData(currentPage);
 
     // 스크롤 이벤트 감지
     $(window).scroll(function() {
         // 스크롤이 페이지 끝에 도달했을 때 추가 데이터 요청
         if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100 && !loading) {
             loading = true;
-            loadMoreData(currentPage);
+            loadMoreData(currentPage);  // 2페이지부터 데이터를 로드
         }
     });
 
@@ -35,18 +32,14 @@ $(document).ready(function() {
     }
 
     function renderData(data) {
-        console.log("data:", data); // 데이터 확인
-
         const $gallery = $('.gallery');
 
         data.forEach(function(boardDTO) {
-            // 각각의 속성을 변수에 할당
             const seqBoard = boardDTO.seq_board;
             const image = boardDTO.image;
             const imageSubject = boardDTO.imageSubject;
             const hit = boardDTO.hit;
 
-            // 새로운 항목 생성
             const newItem = `
                 <div class="grid-item">
                     <a href="${contextPath}/board/boardView.do?seq_board=${seqBoard}">
@@ -55,11 +48,9 @@ $(document).ready(function() {
                     </a>
                 </div>`;
             
-            // 갤러리에 새 항목 추가
             $gallery.append(newItem);
         });
 
-        // 이미지가 추가된 후 resizeGridItems 호출
         resizeGridItems();
     }
 

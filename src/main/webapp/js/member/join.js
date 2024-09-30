@@ -33,7 +33,7 @@ $('#id').focusout(function() {
 });
 
 // 비밀번호 검증
-$('#pwd').focusout(function() {
+$('#password').focusout(function() {
     var pwdValue = $('#pwd').val();
     $('#pwdDiv').empty();
     

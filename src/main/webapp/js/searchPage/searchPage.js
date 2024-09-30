@@ -63,6 +63,7 @@ $(document).ready(function() {
                 var rowGap = parseInt($grid.css('grid-gap'));
                 var rowSpan = Math.floor(($gridItem.find('img').outerHeight() + rowGap) / (rowHeight + rowGap));
                 $gridItem.css('grid-row-end', 'span ' + rowSpan);
+				console.log(rowHeight+" "+rowGap+" "+rowSpan)
             });
         });
 

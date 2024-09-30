@@ -59,11 +59,12 @@ $(document).ready(function() {
 			var $gridItem = $(this);
 			imagesLoaded(this, function() {
 				var $grid = $('.gallery');
-				var rowHeight = parseInt($grid.css('grid-auto-rows'));
+				var rowHeight = parseInt($grid.css('grid-auto-rows')) || 0;
 				var rowGap = parseInt($grid.css('grid-gap'));
 				var rowSpan = Math.floor(($gridItem.find('img').outerHeight() + rowGap) / (rowHeight + rowGap));
+				console.log(rowHeight+" "+rowGap+" "+rowSpan)
 				$gridItem.css('grid-row-end', 'span ' + rowSpan);
-			});
+			});	
 		});
 
 		var $gallery = $('.gallery');
